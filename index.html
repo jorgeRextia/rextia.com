@@ -10,10 +10,33 @@
 </head>
 <body>
 
+<!-- Logo flotante a la izquierda -->
+<div class="position-fixed start-0 top-0 mt-3 ms-3 z-3">
+  <a href="#inicio" class="d-block bg-dark bg-opacity-75 rounded-3 p-2 shadow-lg"">
+    <img src="img/logo.png" alt="Rextia Logo" style="height: 36px;">
+  </a>
+</div>
+
+<!-- Navbar flotante tipo pill alineado a la derecha -->
+<nav class="navbar navbar-expand-lg navbar-dark position-fixed end-0 top-0 mt-3 me-3 z-3">
+  <div class="rounded-pill bg-dark bg-opacity-75 px-4 py-2 d-flex align-items-center shadow-lg"
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarRextia" aria-controls="navbarRextia" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarRextia">
+      <ul class="navbar-nav d-flex flex-row justify-content-end mb-0">
+        <li class="nav-item"><a class="nav-link px-3" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#nosotros">Quiénes somos</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <!-- Hero -->
-<header class="hero">
+<header class="hero" id="inicio">
   <div class="container hero-content text-center">
-    <img src="img/logo.png" alt="Rextia Logo" style="height: 80px;">
     <h1 class="display-4 fw-bold mt-3">Soluciones de software a la medida</h1>
     <p class="lead">Impulsamos la transformación digital de tu negocio con herramientas tecnológicas y automatización</p>
     <a href="#contacto" class="btn btn-primary btn-lg mt-3">Contáctanos</a>
@@ -23,7 +46,7 @@
 
 <!-- Sobre Nosotros -->
 <section class="section-dark text-center fade-in">
-  <div class="container">
+  <div class="container" id="nosotros">
     <h2 class="mb-4">¿Quiénes somos?</h2>
     <p class="mb-4">En Rextia ayudamos a pequeñas y medianas empresas a modernizar sus procesos operativos mediante soluciones personalizadas en software e inteligencia artificial.</p>
     <div class="row">
@@ -36,7 +59,7 @@
 
 <!-- Servicios -->
 <section class="text-center py-5 fade-in">
-  <div class="container">
+  <div class="container" id="servicios">
     <h2 class="mb-4">Nuestros Servicios</h2>
     <div class="row g-4">
       <div class="col-md-4"><i class="bi bi-box-seam fs-2"></i><h5 class="mt-2">ERP básicos</h5><p>Automatizamos operaciones esenciales para pymes.</p></div>
