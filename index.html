@@ -1,175 +1,340 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rextia | Software que Impulsa el Crecimiento de tu PyME</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rextia | Desarrollo de Software para PyMEs</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
-  <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="img/icono.svg" type="image/x-icon">
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top z-3">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-
-      <!-- Logo a la izquierda -->
-      <a class="navbar-brand d-flex bg-nav-shadow" href="#inicio">
-        <img class="m-1" src="img/logo.svg" alt="Rextia Logo">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">
+        <img src="img/logo.svg" alt="Rextia">
       </a>
-
-      <!-- Menú centrado -->
-      <div class="nav-float bg-nav-shadow bg-nav-dark d-none d-lg-flex">
-        <ul class="navbar-nav d-flex flex-row justify-content-end mb-0">
-          <li class="nav-item">
-            <a class="nav-link text-white px-3" href="#inicio">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-3" href="#servicios">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-3" href="#contacto">Contacto</a>
-          </li>
-          <!-- Botón a la derecha -->
-          <li class="nav-item">
-            <a href="https://calendar.app.google/r2rRvZmhvMHdYrv27" class="btn btn-accent px-3 ms-1">Agendar Asesoría</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Botón ☰ para móviles -->
-      <button class="navbar-toggler d-lg-none" id="btn-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-    </div>
-
-    <!-- Menú colapsable móvil -->
-    <div class="m-auto mobile-navbar collapse d-lg-none" id="navbarMobile">
-      <ul class="navbar-nav text-center">
-        <li class="nav-item"><a class="nav-link text-white" href="#inicio">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#servicios">Servicios</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="#contacto">Contacto</a></li>
-        <li class="nav-item mt-2">
-          <a href="https://calendar.app.google/r2rRvZmhvMHdYrv27" class="btn btn-accent w-100">Agendar Asesoría</a>
-        </li>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#paquetes">Paquetes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="https://outlook.office.com/book/Rextiacom@rextia.com/" class="btn btn-primary" target="_blank">Agendar Asesoría</a>
+      </div>
     </div>
   </nav>
-
   <!-- Hero -->
-  <header id="inicio" class="hero">
-    <div class="hero-content d-flex flex-column align-items-center justify-content-center">
-      <h1 class="fw-bold text-center">Transformamos tu visión en realidad</h1>
-      <div class="code-window my-5 px-5">
-        <div class="bg-dark text-white rounded shadow-lg" style="max-width: 700px; font-family: monospace;">
-          <!-- Header con botones -->
-          <div class="d-flex align-items-center gap-2 p-2 rounded-top bg-black">
-            <div class="rounded-circle bg-danger" style="width: 10px; height: 10px;"></div>
-            <div class="rounded-circle bg-warning" style="width: 10px; height: 10px;"></div>
-            <div class="rounded-circle bg-success" style="width: 10px; height: 10px;"></div>
-          </div>
-          <!-- Cuerpo del editor -->
-          <div class="p-3" style="white-space: pre-wrap; font-size: 0.875rem;">Convertimos los desafíos de tu negocio en oportunidades con software a la medida. Automatizamos tareas y potenciamos la productividad de tu negocio con soluciones ágiles e innovadoras. <br><br>¡Contáctanos ahora y lleva tu negocio al futuro digital!.
-          </div>
-        </div>
-      </div>
-      <a href="#contacto" class="btn btn-accent btn-lg mt-3">Agenda una Asesoría Gratuita</a>
-    </div>
-    <svg id="pcb-svg" xmlns="http://www.w3.org/2000/svg" style="position:absolute; inset:0;"></svg>
-    <svg id="bubbles-anim" xmlns="http://www.w3.org/2000/svg"><!-- Las burbujas se generan automáticamente --></svg>
-    <div class="scroll-indicator"><i class="bi bi-chevron-double-down"></i></div>
-  </header>
-
-  <!-- Sección Servicios -->
-  <section id="servicios" class="fade-in text-center">
+  <section id="inicio" class="hero">
     <div class="container">
-      <h2 class="mb-5">Nuestros Servicios</h2>
-      <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-        <div class="col">
-          <div class="card card-service h-100 text-white">
-            <div class="card-body text-center">
-              <i class="bi bi-code-slash mb-3"></i>
-              <h5 class="card-title">Desarrollo de Software a la Medida</h5>
-              <p class="card-text">Creamos software que automatiza procesos claves para impulsar tu productividad y crecimiento.</p>
+      <div class="row align-items-center">
+        <svg id="pcb-svg" xmlns="http://www.w3.org/2000/svg" style="position:absolute; inset:0;"></svg>
+        <div class="col-lg-6 hero-content" data-aos="fade-right">
+          <h1 class="display-3 fw-bold mb-4">Transformamos tu visión en realidad</h1>
+          <p class="lead mb-4">Convertimos los desafíos de tu negocio en oportunidades con software a la medida. Automatizamos tareas y potenciamos la productividad.</p>
+          <div class="d-flex gap-3">
+            <a href="#contacto" class="btn btn-primary btn-lg">Comenzar Ahora</a>
+            <a href="#servicios" class="btn btn-outline-light btn-lg">Ver Servicios</a>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left">
+          <div class="code-window">
+            <div class="p-3 bg-black d-flex gap-2">
+              <div class="rounded-circle bg-danger" style="width:12px;height:12px"></div>
+              <div class="rounded-circle bg-warning" style="width:12px;height:12px"></div>
+              <div class="rounded-circle bg-success" style="width:12px;height:12px"></div>
+            </div>
+            <div class="p-3" style="font-family: monospace; font-size: 0.9rem;">
+              <span style="color:#10B981">const</span> <span style="color:#F7FAFC">rextia</span> <span style="color:#8B5CF6">=</span> {<br>
+              &nbsp;&nbsp;<span style="color:#3B82F6">servicios:</span> [<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#F59E0B">"Software"</span>,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#F59E0B">"Web"</span>,<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#F59E0B">"IA"</span><br>
+              &nbsp;&nbsp;]<br>
+              };
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card card-service h-100 text-white">
-            <div class="card-body text-center">
-              <i class="bi bi-clipboard-data mb-3"></i>
-              <h5 class="card-title">Optimiza tu Inventario</h5>
-              <p class="card-text">Evita pérdidas y sobre-stock con visibilidad en tiempo real para decisiones rápidas y precisas.</p>
+        <div class="scroll-indicator"><i class="bi bi-chevron-double-down"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title" data-aos="fade-up">Nuestros Servicios</h2>
+        <p class="text-muted" data-aos="fade-up">Soluciones tecnológicas para impulsar tu negocio</p>
+      </div>
+      <div class="row g-4">
+        <!-- Servicio 1 -->
+         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="text-white fw-bold text-decoration-none d-flex align-items-center">
+              <div class="card card-custom border-0 shadow-lg">
+                <div class="card-img-container ratio ratio-4x3">
+                    <img src="img/software.webp" class="card-img-top w-100 h-100 object-fit-cover" alt="Promoción">
+                </div>
+                <div class="card-body-wrapper">
+                    <div class="custom-badge">
+                        <h3 class="h5 fw-bold">Software a la Medida</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text mb-4 text-light opacity-75">Aplicaciones personalizadas que automatizan procesos clave.</p>
+                        <p>Quiero saber más <i class="bi bi-chevron-right ms-2"></i></p>
+                    </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <!-- Servicio 2 -->
+         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="text-white fw-bold text-decoration-none d-flex align-items-center">
+              <div class="card card-custom border-0 shadow-lg">
+                <div class="card-img-container ratio ratio-4x3">
+                    <img src="img/apis.webp" class="card-img-top w-100 h-100 object-fit-cover" alt="Promoción">
+                </div>
+                <div class="card-body-wrapper">
+                    <div class="custom-badge">
+                        <h3 class="h5 fw-bold">APIs e Integraciones</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text mb-4 text-light opacity-75">Conecta sistemas para un flujo de trabajo unificado.</p>
+                        <p>Quiero saber más <i class="bi bi-chevron-right ms-2"></i></p>
+                    </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <!-- Servicio 3 -->
+         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="text-white fw-bold text-decoration-none d-flex align-items-center">
+              <div class="card card-custom border-0 shadow-lg">
+                <div class="card-img-container ratio ratio-4x3">
+                    <img src="img/web.webp" class="card-img-top w-100 h-100 object-fit-cover" alt="Promoción">
+                </div>
+                <div class="card-body-wrapper">
+                    <div class="custom-badge">
+                        <h3 class="h5 fw-bold">Desarrollo Web</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text mb-4 text-light opacity-75">Sitios profesionales que reflejan tu identidad de marca.</p>
+                        <p>Quiero saber más <i class="bi bi-chevron-right ms-2"></i></p>
+                    </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <!-- Servicio 4 -->
+         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="text-white fw-bold text-decoration-none d-flex align-items-center">
+              <div class="card card-custom border-0 shadow-lg">
+                <div class="card-img-container ratio ratio-4x3">
+                    <img src="img/warehouse.webp" class="card-img-top w-100 h-100 object-fit-cover" alt="Promoción">
+                </div>
+                <div class="card-body-wrapper">
+                    <div class="custom-badge">
+                        <h3 class="h5 fw-bold">Gestión de Inventario</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text mb-4 text-light opacity-75">Control en tiempo real para decisiones rápidas y precisas.</p>
+                        <p>Quiero saber más <i class="bi bi-chevron-right ms-2"></i></p>
+                    </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        <!-- Servicio 5 -->
+         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="text-white fw-bold text-decoration-none d-flex align-items-center">
+              <div class="card card-custom border-0 shadow-lg">
+                <div class="card-img-container ratio ratio-4x3">
+                    <img src="img/automatization.webp" class="card-img-top w-100 h-100 object-fit-cover" alt="Promoción">
+                </div>
+                <div class="card-body-wrapper">
+                    <div class="custom-badge">
+                        <h3 class="h5 fw-bold">Automatización</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <p class="card-text mb-4 text-light opacity-75">Reduce tareas repetitivas y aumenta eficiencia.</p>
+                        <p>Quiero saber más <i class="bi bi-chevron-right ms-2"></i></p>
+                    </div>
+                </div>
+              </div>
+            </a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paquetes -->
+  <section id="paquetes" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title" data-aos="fade-up">Paquetes</h2>
+        <p class="text-muted" data-aos="fade-up">Soluciones adaptadas a tu presupuesto</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4" data-aos="fade-up">
+          <div class="pricing-card">
+            <h3 class="h4 mb-3">Básico</h3>
+            <div class="mb-4">
+              <span class="price">$8,000</span>
+              <span class="text-muted">MXN</span>
             </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Landing page</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Responsive</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Formulario contacto</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hosting 1 año</li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline-primary w-100">Comenzar</a>
           </div>
         </div>
-        <div class="col">
-          <div class="card card-service h-100 text-white">
-            <div class="card-body text-center">
-              <i class="bi bi-window mb-3"></i>
-              <h5 class="card-title">Tu Presencia Profesional en Línea</h5>
-              <p class="card-text">Sitios web personalizados que reflejan la identidad de tu negocio y generan confianza.</p>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card featured">
+            <div class="badge bg-primary mb-3">Popular</div>
+            <h3 class="h4 mb-3">Profesional</h3>
+            <div class="mb-4">
+              <span class="price">$15,000</span>
+              <span class="text-muted">MXN</span>
             </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Sitio 3-5 páginas</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>WhatsApp integrado</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Google Analytics</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>SEO básico</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>2 revisiones</li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary w-100">Comenzar</a>
           </div>
         </div>
-        <div class="col">
-          <div class="card card-service h-100 text-white">
-            <div class="card-body text-center">
-              <i class="bi bi-lightning mb-3"></i>
-              <h5 class="card-title">Ahorra Tiempo con Automatización</h5>
-              <p class="card-text">Implementamos automatización para tareas repetitivas y aumentamos eficiencia operativa.</p>
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card">
+            <h3 class="h4 mb-3">Premium</h3>
+            <div class="mb-4">
+              <span class="price">$25,000+</span>
+              <span class="text-muted">MXN</span>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card card-service h-100 text-white">
-            <div class="card-body text-center">
-              <i class="bi bi-robot mb-3"></i>
-              <h5 class="card-title">Capacitación en Inteligencia Artificial</h5>
-              <p class="card-text">Entrenamos a tu equipo en herramientas como ChatGPT y Grok para incrementar productividad.</p>
-            </div>
+            <ul class="list-unstyled mb-4">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Páginas ilimitadas</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Panel admin</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Blog integrado</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>SEO avanzado</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Capacitación</li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline-primary w-100">Comenzar</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sección Contacto -->
-  <section id="contacto" class="fade-in">
-    <div class="container text-center">
-      <h2 class="mb-4">Contáctanos</h2>
-      <p class="mb-4">Estamos listos para escuchar tu idea. Cuéntanos qué necesitas y un experto se pondrá en contacto contigo sin compromiso.</p>
-      <a href="https://calendar.app.google/r2rRvZmhvMHdYrv27" target="_blank" class="btn btn-accent btn-lg">Enviar Mensaje</a>
-      <div class="mt-4">
-        <p><i class="bi bi-whatsapp"></i> +52 477 916 0099</p>
-        <p><i class="bi bi-envelope"></i> info@rextia.com</p>
-        <p>Servicio para la región del Bajío y todo México</p>
+  <!-- CTA -->
+  <section class="py-5" style="background: linear-gradient(135deg, var(--primary), var(--secondary))">
+    <div class="container text-center text-white">
+      <div data-aos="zoom-in">
+        <h2 class="display-4 fw-bold mb-4">¿Listo para Transformar tu Negocio?</h2>
+        <p class="fs-5 mb-4">Agenda una asesoría gratuita sin compromiso</p>
+        <a href="https://outlook.office.com/book/Rextiacom@rextia.com/" class="btn btn-light btn-lg px-5" target="_blank">Agendar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title" data-aos="fade-up">Contáctanos</h2>
+        <p class="text-muted" data-aos="fade-up">Estamos listos para escuchar tu idea</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <div class="card border-0 shadow-sm text-center p-4 h-100">
+            <div class="mx-auto mb-3" style="width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:15px;display:flex;align-items:center;justify-content:center">
+              <i class="bi bi-whatsapp text-white fs-3"></i>
+            </div>
+            <h5>WhatsApp</h5>
+            <a href="https://wa.me/524779160099" class="text-decoration-none">+52 477 916 0099</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card border-0 shadow-sm text-center p-4 h-100">
+            <div class="mx-auto mb-3" style="width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:15px;display:flex;align-items:center;justify-content:center">
+              <i class="bi bi-envelope text-white fs-3"></i>
+            </div>
+            <h5>Email</h5>
+            <a href="mailto:info@rextia.com" class="text-decoration-none">info@rextia.com</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="card border-0 shadow-sm text-center p-4 h-100">
+            <div class="mx-auto mb-3" style="width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:15px;display:flex;align-items:center;justify-content:center">
+              <i class="bi bi-geo-alt text-white fs-3"></i>
+            </div>
+            <h5>Ubicación</h5>
+            <p class="mb-0">Región del Bajío<br>y todo México</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center">
+  <footer class="py-5">
     <div class="container">
-      <a href="#inicio">
-        <img src="img/logo.svg" alt="Rextia Logo" style="height: 40px;">
-      </a>
-      <ul class="nav justify-content-center mt-3">
-        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-      </ul>
-      <div class="mt-3">
-        <a href="#">LinkedIn</a> |
-        <a href="#">Aviso de Privacidad</a>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <img src="img/logo.svg" alt="Rextia" style="height:50px;" class="mb-3">
+          <p class="text-white-50">Transformamos tu visión en realidad con soluciones de software innovadoras.</p>
+          <div>
+            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#inicio">Inicio</a></li>
+            <li class="mb-2"><a href="#servicios">Servicios</a></li>
+            <li class="mb-2"><a href="#paquetes">Paquetes</a></li>
+            <li class="mb-2"><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3">Servicios</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#servicios">Software a Medida</a></li>
+            <li class="mb-2"><a href="#servicios">Desarrollo Web</a></li>
+            <li class="mb-2"><a href="#servicios">Automatización</a></li>
+            <li class="mb-2"><a href="#servicios">Capacitación IA</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="mb-3">Contacto</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><small><i class="bi bi-whatsapp me-2"></i>477 916 0099</small></li>
+            <li class="mb-2"><small><i class="bi bi-envelope me-2"></i>info@rextia.com</small></li>
+          </ul>
+        </div>
       </div>
-      <p class="mt-3">© 2025 Rextia. Todos los derechos reservados.</p>
+      <hr class="my-4 opacity-25">
+      <div class="text-center text-white-50">
+        <p class="mb-0">© 2025 Rextia. Todos los derechos reservados.</p>
+      </div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

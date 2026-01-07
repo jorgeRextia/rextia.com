@@ -1,151 +1,146 @@
-const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Intersection Observer para animaciones
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
 };
 
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-    });
-}, appearOptions);
-
-faders.forEach(el => appearOnScroll.observe(el));
-
-document.addEventListener('click', function (event) {
-    const navbarToggler = document.querySelector('#btn-toggler');
-    const navbarCollapse = document.querySelector('#navbarMobile');
-
-    // Si el menú está expandido
-    if (navbarToggler && navbarCollapse.classList.contains('show')) {
-        // Y el clic ocurrió fuera del navbar y del toggler
-        if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
-            navbarToggler.click(); // Simula un clic en el botón ☰ para cerrarlo
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
         }
-    }
+    });
+}, observerOptions);
 
-    // Cerrar al hacer clic en un link del menú
-      if (event.target.classList.contains('nav-link')) {
-        navbarToggler.click();
-      }
+document.querySelectorAll('.service-card, .proceso-step, .stat-item, .info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease';
+    observer.observe(el);
 });
 
 
-/* * Bubbles Animation
- * This code creates a bubble animation using SVG circles.
- * Each circle has a random position, size, and animation delay.
-
-const svg = document.getElementById("bubbles-anim");
-
-function rand(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-const colors = [
-    "#3B82F6", // azul-brillante
-    "#8B5CF6", // purpura
-    "#10B981", // verde
-    "#F7FAFC", // blanco-hueso
-    "#F59B0E"  // ambar
-];
-
-for (let i = 0; i < 25; i++) {
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    const cx = rand(150, window.innerWidth);
-    const cy = rand(150, window.innerHeight);
-    const r = rand(50, 80);
-    const delay = rand(0, 10);
-
-    circle.setAttribute("cx", cx);
-    circle.setAttribute("cy", cy);
-    circle.setAttribute("r", r);
-    circle.setAttribute("class", "bubble");
-    circle.style.animationDelay = `${delay}s`;
-    circle.style.stroke = colors[Math.floor(Math.random() * colors.length)];
-
-    svg.appendChild(circle);
-}
+/* 
+* AOS Initialization and Smooth Scroll for Anchor Links 
 */
+AOS.init({duration:800,once:true,offset:100});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+    e.preventDefault();
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){
+        t.scrollIntoView({behavior:'smooth'});
+        const n=document.querySelector('.navbar-collapse');
+        if(n&&n.classList.contains('show')){
+        bootstrap.Collapse.getInstance(n).hide();
+        }
+    }
+    });
+});
 
 /* Lines Animation
  * This code creates an animation of lines that appear and disappear randomly.
 */
 
 const colors = [
-    "#3B82F6", // azul-brillante
-    "#8B5CF6", // purpura
-    "#10B981", // verde
-    "#F7FAFC", // blanco-hueso
-    "#F59B0E"  // ambar
+  "#3B82F6", // azul-brillante
+  "#8B5CF6", // purpura
 ];
-
+/* SVG Setup */
 const svg = document.getElementById("pcb-svg");
 let W = svg.clientWidth, H = svg.clientHeight;
 
+/* Adjust the SVG size on window resize */
 window.addEventListener('resize', () => {
-  W = svg.clientWidth;
-  H = svg.clientHeight;
+W = svg.clientWidth;
+H = svg.clientHeight;
 });
 
+/* Function to generate a random number between min and max */
 function rand(min, max){ return Math.random()*(max-min)+min; }
 
-
+/* Function to create a zigzag line */
 function createZigzag() {
-  const size = rand(40, 150);
-  const segments = Math.floor(rand(3, 6));
-  const originX = rand(W * 0.3, W * 0.8);
-  const originY = rand(H * 0.3, H * 0.70);
+    const size = rand(40, 150);
+    const segments = Math.floor(rand(3, 6));
+    const originX = rand(W * 0.3, W * 0.8);
+    const originY = rand(H * 0.3, H * 0.70);
 
-  let points = [];
-  let px = originX;
-  let py = originY;
-  points.push(`${px},${py}`);
+    let points = [];
+    let px = originX;
+    let py = originY;
+    points.push(`${px},${py}`);
 
-  let lastDirection = null;
+    let lastDirection = null;
 
-  for (let i = 0; i < segments; i++) {
-    // Ángulos rectos (derecha, arriba, izquierda, abajo)
-    const directions = [
-      [1, 0],   // →
-      [0, 1],   // ↓
-      [-1, 0],  // ←
-      [0, -1]   // ↑
-    ];
+    for (let i = 0; i < segments; i++) {
+        /* Generate direction 90-degree angles */
+        const directions = [
+            [1, 0],   // →
+            [0, 1],   // ↓
+            [-1, 0],  // ←
+            [0, -1]   // ↑
+        ];
 
-    // Filtra para no repetir dirección contraria
-    const validDirs = directions.filter(dir => {
-      if (!lastDirection) return true;
-      return !(dir[0] === -lastDirection[0] && dir[1] === -lastDirection[1]);
+        /* Prevent immediate reversal */
+        const validDirs = directions.filter(dir => {
+            if (!lastDirection) return true;
+            return !(dir[0] === -lastDirection[0] && dir[1] === -lastDirection[1]);
+        });
+
+        /* Choose a random valid direction */
+        const dir = validDirs[Math.floor(Math.random() * validDirs.length)];
+        lastDirection = dir;
+
+        /* Update position */
+        px += dir[0] * size;
+        py += dir[1] * size;
+
+        /* Keep within bounds */
+        points.push(`${px},${py}`);
+    }
+
+    /* Create polyline element */
+    const poly = document.createElementNS(svg.namespaceURI, 'polyline');
+    poly.setAttribute('points', points.join(' '));
+    poly.setAttribute('class', 'trace');
+    svg.appendChild(poly);
+
+    /* Animation setup */
+    const animationDuration = rand(3, 5);
+
+    /* Trigger reflow for CSS animation */
+    requestAnimationFrame(() => {
+        const length = poly.getTotalLength();
+        poly.setAttribute('stroke-dasharray', length);
+        poly.setAttribute('stroke-dashoffset', length);
+        poly.style.animationDuration = `${animationDuration}s`;
+        poly.style.stroke = colors[Math.floor(Math.random() * colors.length)];  
     });
 
-    const dir = validDirs[Math.floor(Math.random() * validDirs.length)];
-    lastDirection = dir;
-
-    px += dir[0] * size;
-    py += dir[1] * size;
-
-    points.push(`${px},${py}`);
-  }
-
-  const poly = document.createElementNS(svg.namespaceURI, 'polyline');
-  poly.setAttribute('points', points.join(' '));
-  poly.setAttribute('class', 'trace');
-  svg.appendChild(poly);
-
-  const animationDuration = rand(3, 5);
-
-  requestAnimationFrame(() => {
-    const length = poly.getTotalLength();
-    poly.setAttribute('stroke-dasharray', length);
-    poly.setAttribute('stroke-dashoffset', length);
-    poly.style.animationDuration = `${animationDuration}s`;
-    poly.style.stroke = colors[Math.floor(Math.random() * colors.length)];  
-  });
-
-  setTimeout(() => {
-    if (poly.parentNode) poly.remove();
-  }, animationDuration * 1000 + 500); // Elimina después de la animación más un pequeño margen
+    /* Remove polyline after animation */
+    setTimeout(() => {
+        if (poly.parentNode) poly.remove();
+    }, animationDuration * 1000 + 500); /* Extra 500ms to ensure animation completes */
 }
-setInterval(createZigzag, 300);
+
+/* Create zigzag lines at intervals */
+setInterval(createZigzag, 500);
