@@ -11,6 +11,21 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--dark);
   background: var(--light);
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; /* ← Cambiar a fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveGrid 20s linear infinite;
+  pointer-events: none; /* ← No interfiere con clicks */
 }
 
 /*
@@ -82,14 +97,14 @@ body {
   position: absolute;
   width: 150%;
   height: 150%;
-  background: radial-gradient(circle, rgba(59,130,246,0.1) 1px, transparent 1px);
+  background: radial-gradient(circle, rgba(19, 100, 231, 0.4) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: moveGrid 20s linear infinite;
 }
 
 @keyframes moveGrid {
   0% { transform: translate(0,0); }
-  100% { transform: translate(50px,50px); }
+  100% { transform: translate(80px, 80px); }
 }
 
 .hero-content {
@@ -154,6 +169,167 @@ body {
   }
 }
 
+/* 
+* Sección Sobre Rextia
+*/
+.about-section {
+  padding: 6rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.about-content .highlight {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.about-features li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-size: 1.05rem;
+  color: var(--dark);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.about-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.circle-bg {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 20px;
+  animation: floatElement 5s ease-in-out infinite;
+}
+
+.floating-element-1 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  opacity: 0.8;
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+}
+
+.floating-element-2 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  opacity: 0.6;
+  bottom: 15%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.floating-element-3 {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--secondary), var(--accent));
+  opacity: 0.7;
+  top: 50%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+@keyframes floatElement {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+}
+
+.center-icon {
+  position: relative;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  background: var(--light);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+  font-size: 5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-content h2 {
+    font-size: 2rem;
+  }
+  
+  .about-image {
+    min-height: 400px;
+    margin-top: 3rem;
+  }
+
+  .circle-bg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .center-icon {
+    width: 150px;
+    height: 150px;
+    font-size: 4rem;
+  }
+}
+
 /*
 * Section Titles
 */
@@ -169,43 +345,26 @@ body {
 /* 
 * Service Cards 
 */
-.service-icon {
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  margin-bottom: 1.5rem;
-}
 
-/* Colores y base de la tarjeta */
 .card-custom {
-  /*max-width: 350px;*/
   background: var(--dark);
   border-radius: 25px;
-  overflow: hidden; /* Importante para que el contenido no se salga al subir */
-  color: white;
+  overflow: hidden;
+  color: var(--light);
   position: relative;
 }
 
-/* Contenedor de la imagen para controlar su tamaño */
 .card-img-container {
   position: relative;
   overflow: hidden;
-  height: 50%; /* Altura fija inicial */
+  height: 50%;
 }
 
 .card-img-top {
-  transition: transform 0.5s ease;
-  
-  object-fit: cover; /* Mantiene la proporción sin deformar */
+  transition: transform 0.5s ease;  
+  object-fit: cover;
 }
 
-/* El cuerpo de la tarjeta que subirá */
 .card-body-wrapper {
   background-color: var(--dark);
   position: relative;
@@ -213,14 +372,13 @@ body {
   z-index: 2;
 }
 
-/* Estilo del botón (ahora dentro del wrapper para que suba con él) */
 .custom-badge {
   position: absolute;
   max-width: 85%;
-  top: -52px; /* Se posiciona justo arriba del card-body */
+  top: -52px;
   right: 0;
   background-color: var(--dark);
-  color: white;
+  color: var(--light);
   padding: 10px 25px;
   font-weight: bold;
   font-size: 0.9rem;
@@ -228,7 +386,6 @@ body {
   z-index: 3;
 }
 
-/* Curva invertida lateral */
 .custom-badge::after {
   content: "";
   position: absolute;
@@ -242,42 +399,20 @@ body {
   pointer-events: none;
 }
 
-/* --- EFECTO HOVER --- */
+/* --- HOVER efect in cards --- */
 .card-custom:hover .card-body-wrapper {
-  transform: translateY(-80px); /* Sube el texto cubriendo la imagen */
+  transform: translateY(-80px);
 }
 
 .card-custom:hover .card-img-top {
-  transform: scale(1.1); /* Ligero zoom a la imagen para dar profundidad */
+  transform: scale(1.1);
 }
 
-/* 
-* Pricing Cards 
+/*
+* CTA Section 
 */
-.pricing-card {
-  background: white;
-  border-radius: 20px;
-  padding: 2.5rem;
-  height: 100%;
-  border: 2px solid #e2e8f0;
-  transition: all 0.4s;
-}
-
-.pricing-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
-  box-shadow: 0 20px 60px rgba(59,130,246,0.2);
-}
-
-.pricing-card.featured {
-  border-color: var(--primary);
-  box-shadow: 0 20px 60px rgba(59,130,246,0.15);
-}
-
-.price {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--dark);
+.cta-title {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
 /*
