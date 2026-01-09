@@ -79,7 +79,7 @@ function rand(min, max){ return Math.random()*(max-min)+min; }
 
 /* Function to create a zigzag line */
 function createZigzag() {
-    const size = rand(40, 150);
+    const size = rand(10, 200);
     const segments = Math.floor(rand(3, 6));
     const originX = rand(W * 0.3, W * 0.8);
     const originY = rand(H * 0.3, H * 0.70);
