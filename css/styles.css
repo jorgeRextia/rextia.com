@@ -18,15 +18,14 @@ body {
 
 body::before {
   content: '';
-  position: fixed; /* ← Cambiar a fixed */
-  top: 0;
+  position: fixed;
   left: 0;
   width: 100%;
   height: 100%;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: moveGrid 20s linear infinite;
-  pointer-events: none; /* ← No interfiere con clicks */
+  pointer-events: none;
   z-index: -1;
 }
 
@@ -104,7 +103,7 @@ body::before {
 
 .hero::before {
   content: '';
-  position: fixed; /* ← Cambiar a fixed */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -112,7 +111,7 @@ body::before {
   background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: moveGrid 20s linear infinite;
-  pointer-events: none; /* ← No interfiere con clicks */
+  pointer-events: none;
 }
 
 .hero-content {
