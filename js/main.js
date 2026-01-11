@@ -50,7 +50,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
         t.scrollIntoView({behavior:'smooth'});
         const n=document.querySelector('.navbar-collapse');
         if(n&&n.classList.contains('show')){
-        bootstrap.Collapse.getInstance(n).hide();
+            bootstrap.Collapse.getInstance(n).hide();
         }
     }
     });
