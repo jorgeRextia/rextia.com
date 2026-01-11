@@ -770,8 +770,8 @@ footer a:hover {
 
   .card-body .row,
   .px-xs-0 {
-    padding-right: 2% !important;
-    padding-left: 2% !important;
+    padding-right: 5% !important;
+    padding-left: 5% !important;
   }
 }
 
