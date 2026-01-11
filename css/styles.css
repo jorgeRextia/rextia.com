@@ -82,6 +82,9 @@ body::before {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(59,130,246,0.4);
 }
+.navbar-toggler {
+  color: var(--light);
+}
 
 /* 
 * Hero Section 
@@ -250,6 +253,23 @@ body::before {
   50% { transform: translateY(-20px); }
 }
 
+.center-icon {
+  position: relative;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+  background: var(--light);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+  font-size: 5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--light);
+  animation: floatElement 8s ease-in-out infinite;
+}
+
 .floating-element {
   position: absolute;
   border-radius: 20px;
@@ -291,45 +311,6 @@ body::before {
   50% { transform: translateY(-30px) rotate(10deg); }
 }
 
-.center-icon {
-  position: relative;
-  z-index: 2;
-  width: 200px;
-  height: 200px;
-  background: var(--light);
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
-  font-size: 5rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: var(--light);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .about-content h2 {
-    font-size: 2rem;
-  }
-  
-  .about-image {
-    min-height: 400px;
-    margin-top: 3rem;
-  }
-
-  .circle-bg {
-    width: 300px;
-    height: 300px;
-  }
-
-  .center-icon {
-    width: 150px;
-    height: 150px;
-    font-size: 4rem;
-  }
-}
-
 /*
 * Section Titles
 */
@@ -346,67 +327,125 @@ body::before {
 * Service Cards 
 */
 
-.card-custom {
-  background: var(--dark);
-  border-radius: 25px;
-  overflow: hidden;
-  color: var(--light);
+.card-container {
+  width: 75%;
+  max-width: 1200px;
+  height: 85vh;
   position: relative;
 }
 
-.card-img-container {
-  position: relative;
-  overflow: hidden;
-  height: 70%;
+.service-card-modern {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    transition: transform 0.3s ease;
 }
 
-.card-img-top {
-  transition: transform 0.5s ease;  
-  object-fit: cover;
+/* floating circles */
+.circle-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-.card-body-wrapper {
-  background-color: var(--dark);
-  position: relative;
-  height: 30%;
-  transition: transform 0.5s ease;
-  z-index: 2;
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
 }
 
-.custom-badge {
-  position: absolute;
-  max-width: 85%;
-  top: -52px;
-  right: 0;
-  background-color: var(--dark);
-  color: var(--light);
-  padding: 10px 25px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  border-radius: 25px 0 0 0;
-  z-index: 3;
+/* strong gray circle (front) */
+.circle-bg-1 {
+    width: 100%;
+    height: 100%;
+    background: rgba(80, 80, 80, 0.4);
+    top: 15%;
+    left: 5%;
+    animation: float-slow 8s infinite ease-in-out;
+    z-index: 1;
 }
 
-.custom-badge::after {
-  content: "";
-  position: absolute;
-  left: -20px;
-  bottom: 0;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  border-bottom-right-radius: 20px;
-  box-shadow: 10px 10px 0 10px var(--dark);
-  pointer-events: none;
+/* light gray circle (middle) */
+.circle-bg-2 {
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 200, 200, 0.2);
+    bottom: 15%;
+    right: 5%;
+    animation: float-medium 6s infinite ease-in-out;
+    z-index: 2;
 }
 
-/* --- HOVER efect in cards --- */
-.card-custom:hover .card-body-wrapper {
-  transform: translateY(-50px);
+/* strong gray circle 2 (front) */
+.circle-bg-3 {
+    width: 100%;
+    height: 100%;
+    background: rgba(80, 80, 80, 0.4);
+    bottom: 15%;
+    left: 5%;
+    animation: float-slow-2 8s infinite ease-in-out;
+    z-index: 1;
 }
 
-.card-custom:hover .card-img-top {
-  transform: scale(1.1);
+/* light gray circle 2 (middle) */
+.circle-bg-4 {
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 200, 200, 0.2);
+    top: 15%;
+    right: 5%;
+    animation: float-medium-2 6s infinite ease-in-out;
+    z-index: 2;
+}
+
+/* image circle (center) */
+.main-circle {
+    position: relative;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 3;
+    animation: float-fast 5s infinite ease-in-out;
+}
+
+.main-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keyframes for floating animations */
+@keyframes float-slow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(15px, -20px); }
+}
+
+@keyframes float-medium {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 15px); }
+}
+
+@keyframes float-fast {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, 10px); }
+}
+
+@keyframes float-slow-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 15px); }
+}
+
+@keyframes float-medium-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(15px, -20px); }
+}
+
+/* Z-index utility classes */
+.z-2 { 
+  z-index: 2; 
+  position: relative; 
 }
 
 /*
@@ -532,6 +571,7 @@ transform: scaleX(1);
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: none;
 }
 
 .circle-contact-bg {
@@ -606,4 +646,116 @@ footer a:hover {
   background: var(--primary);
   transform: translateY(-3px);
   color: white;
+}
+
+
+/* 
+* Responsive
+*/
+@media (max-width: 991px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .nav-item {
+    background: var(--dark);
+    filter: brightness(1);
+    margin-top:2px;
+  }
+
+  .nav-btn-contact {
+    height: 100%;
+    width: 100%;
+  }
+  /*
+  * About Section Adjustments for medium devices
+  */
+  .opacity-mx-50 {
+    filter: opacity(0.5);
+  }
+
+  .position-mx-absolute {
+    position: absolute;
+  }
+
+  .order-mx-2 {
+    order: 2 !important;
+  }
+  /*
+  * Service Cards Adjustments for medium devices
+  */
+  .display-mx-5 {
+    font-size: calc(1.425rem + 2.1vw);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .fs-mx-5 {
+    font-size: 1.25rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /*
+  * Navbar Adjustments for small devices
+  */
+  .nav-item,
+  .nav-btn-contact {
+    font-size: 1.5rem;
+  }
+  /*
+  * About Section Adjustments for small devices
+  */
+  .order-smx-2 {
+    order: 2 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  /*
+  * Container Padding Adjustments for small devices
+  */
+  .container {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+  }
+  /*
+  * Navbar Adjustments for small devices
+  */
+  .nav-item,
+  .nav-btn-contact {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /*
+  * About Section Adjustments for large devices
+  */
+  .about-content h2 {
+    font-size: 2rem;
+  }
+  
+  .about-image {
+    min-height: 400px;
+    margin-top: 3rem;
+  }
+
+  .circle-bg {
+    width: 300px;
+    height: 300px;
+  }
+
+  .center-icon {
+    width: 150px;
+    height: 150px;
+    font-size: 4rem;
+  }
+  /* 
+  * Contact Cards Adjustments for large devices
+  */
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+  }
 }
