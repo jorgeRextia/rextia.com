@@ -768,7 +768,8 @@ footer a:hover {
     font-size: 1rem !important;
   }
 
-  .card-body .row {
+  .card-body .row,
+  .px-xs-0 {
     padding-right: 0 !important;
     padding-left: 0 !important;
   }
