@@ -728,13 +728,23 @@ footer a:hover {
   .order-smx-2 {
     order: 2 !important;
   }
+  /*
+  * Remove Dots animation for small devices
+  */
+  body::before,
+  .hero::before {
+    display: none;
+    content: none;
+    animation: none;
+  }
 }
 
 @media (max-width: 575px) {
   /*
-  * Remove Background Grid for very small devices
+  * Remove Background Dots animation for very small devices
   */
-  body::before {
+  body::before,
+  .hero::before {
     display: none;
     content: none;
     animation: none;
